@@ -22,6 +22,7 @@ public class Shoot : MonoBehaviour
     {
         handVelocity = handRb.velocity;
         handSpeed = handVelocity.magnitude;
+        print(handSpeed);
 
         if(shootOn == false && handSpeed >= handSpeedStart)
         {
