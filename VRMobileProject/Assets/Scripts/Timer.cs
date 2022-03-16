@@ -32,12 +32,12 @@ public class Timer : MonoBehaviour
             {
                 Destroy(item);
             }
-            foreach ( GameObject item in obj)
+            foreach (GameObject item in obj)
             {
                 Destroy(item);
             }
+            StopCoroutine(Time());
         }
-        print("a");
         StartCoroutine(Time());
     }
 }

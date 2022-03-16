@@ -9,6 +9,7 @@ TagManager:
   - EnemyStopField
   - PlayerProjectile
   - Enemy
+  - PowerUpBlock
   layers:
   - Default
   - TransparentFX

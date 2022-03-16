@@ -12,7 +12,7 @@ public class Ammo : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Ground")
+        if (other.gameObject.tag == "Enemy" || other.gameObject.tag == "Ground" || other.gameObject.tag == "PowerUpBlock")
         {
             Destroy(gameObject);
         }
