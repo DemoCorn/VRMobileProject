@@ -32,6 +32,7 @@ public class EnemyPathing : MonoBehaviour
                     if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
                     {
                         agent.destination = playerPosition.position;
+                        agent.angularSpeed = 120.0f;
                     }
                 }
             }
@@ -43,10 +44,13 @@ public class EnemyPathing : MonoBehaviour
         if (collision.gameObject.tag == "PlayerProjectile")
         {
             agent.destination = startingPosition;
+            agent.angularSpeed = 0.0f;
+            agent.velocity = startingPosition - gameObject.transform.position / agent.speed;
         }
         else if(collision.gameObject.tag == "EnemyStopField" && agent.destination == playerPosition.position)
         {
             agent.isStopped = true;
+            agent.velocity = Vector3.zero;
             Invoke("RestartEnemy", stopTime);
         }
     }
