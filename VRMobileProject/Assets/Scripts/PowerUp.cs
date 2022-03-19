@@ -7,6 +7,8 @@ public class PowerUp : MonoBehaviour
 {
     public int powerUpCount;
     public GameObject ammo;
+    public int powerUpCd = 10;
+    private bool onCd = false;
     public GameObject powerUpCountDisplayObj;
     private Text powerUpCountDisplay;
     private GameObject[] enemys;
@@ -17,18 +19,28 @@ public class PowerUp : MonoBehaviour
         powerUpCountDisplay.text = "Power Up Left:" + powerUpCount.ToString();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        enemys = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject item in enemys)
+        if (gameObject.tag == "PlayerProjectile" && onCd == false)
         {
-            Instantiate(ammo, item.transform.position, Quaternion.identity);
-            powerUpCount--;
-            powerUpCountDisplay.text = "Power Up Left:" + powerUpCount.ToString();
+            onCd = true;
+            StartCoroutine(tiemr());
+            enemys = GameObject.FindGameObjectsWithTag("Enemy");
+            foreach (GameObject item in enemys)
+            {
+                Instantiate(ammo, item.transform.position, Quaternion.identity);
+                powerUpCount--;
+                powerUpCountDisplay.text = "Power Up Left:" + powerUpCount.ToString();
+            }
+            if (powerUpCount <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
-        if (powerUpCount <= 0)
-        {
-            Destroy(gameObject);
-        }
+    }
+    private IEnumerator tiemr()
+    {
+        yield return new WaitForSeconds(powerUpCd);
+        onCd = false;
     }
 }
