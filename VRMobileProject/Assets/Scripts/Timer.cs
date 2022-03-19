@@ -7,14 +7,16 @@ public class Timer : MonoBehaviour
 {
     public int timeS, timeM;
     public Text TimeDisplay;
-    public GameObject winDiaplay;
+    public GameObject winDiaplayObj;
+    public Text winDiaplay;
     public GameObject[] obj;
     private GameObject[] Enemys;
     // Start is called before the first frame update
     void Start()
     {
+        winDiaplay = winDiaplayObj.GetComponent<Text>();
         TimeDisplay.text = timeM.ToString() + ":" + timeS.ToString();
-        winDiaplay.SetActive(false);
+        winDiaplayObj.SetActive(false);
         StartCoroutine(Time());
     }
     private IEnumerator Time()
@@ -29,20 +31,33 @@ public class Timer : MonoBehaviour
         TimeDisplay.text = timeM.ToString() + ":" + timeS.ToString();
         if (timeM <= 0 && timeS <= 0)
         {
-            Enemys = GameObject.FindGameObjectsWithTag("Enemy");
-            foreach (GameObject item in Enemys)
-            {
-                Destroy(item);
-            }
-            foreach (GameObject item in obj)
-            {
-                Destroy(item);
-            }
-            winDiaplay.SetActive(true);
+            endGame(true);
         }
         else
         {
             StartCoroutine(Time());
         }
+    }
+    public void endGame(bool isWin)
+    {
+        if(isWin == true)
+        {
+            winDiaplay.text = "You Win";
+        }
+        else if(isWin == false)
+        {
+            winDiaplay.text = "You Lose";
+        }
+        Enemys = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject item in Enemys)
+        {
+            Destroy(item);
+        }
+        foreach (GameObject item in obj)
+        {
+            Destroy(item);
+        }
+        winDiaplayObj.SetActive(true);
+        StopAllCoroutines();
     }
 }
