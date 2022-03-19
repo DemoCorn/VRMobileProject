@@ -49,12 +49,12 @@ public class EnemyPathing : MonoBehaviour
         }
         else if(collision.gameObject.tag == "EnemyStopField" && agent.destination == playerPosition.position)
         {
+            Debug.Log("Encountered Stop Field");
             agent.isStopped = true;
             agent.velocity = Vector3.zero;
             Invoke("RestartEnemy", stopTime);
         }
     }
-
     private void RestartEnemy()
     {
         agent.isStopped = false;

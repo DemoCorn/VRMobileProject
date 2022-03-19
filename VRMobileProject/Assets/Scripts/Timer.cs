@@ -7,12 +7,14 @@ public class Timer : MonoBehaviour
 {
     public int timeS, timeM;
     public Text TimeDisplay;
+    public GameObject winDiaplay;
     public GameObject[] obj;
     private GameObject[] Enemys;
     // Start is called before the first frame update
     void Start()
     {
         TimeDisplay.text = timeM.ToString() + ":" + timeS.ToString();
+        winDiaplay.SetActive(false);
         StartCoroutine(Time());
     }
     private IEnumerator Time()
@@ -36,6 +38,7 @@ public class Timer : MonoBehaviour
             {
                 Destroy(item);
             }
+            winDiaplay.SetActive(true);
         }
         else
         {
