@@ -7,6 +7,7 @@ public class EnemyPathing : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent = null;
     [SerializeField] private Rigidbody rigidBody = null;
+    bool Attacking = true;
     private Transform playerPosition;
     private Vector3 startingPosition;
 
@@ -34,6 +35,7 @@ public class EnemyPathing : MonoBehaviour
                     {
                         agent.destination = playerPosition.position;
                         agent.angularSpeed = 120.0f;
+                        Attacking = true;
                     }
                 }
             }
@@ -47,22 +49,14 @@ public class EnemyPathing : MonoBehaviour
             agent.destination = startingPosition;
             agent.angularSpeed = 0.0f;
             agent.velocity = startingPosition - gameObject.transform.position / agent.speed;
-        }
-        else if(collision.gameObject.tag == "EnemyStopField" && agent.destination == playerPosition.position)
-        {
-            Debug.Log("Encountered Stop Field");
-            agent.isStopped = true;
-            agent.velocity = Vector3.zero;
-            rigidBody.velocity = Vector3.zero;
             rigidBody.angularVelocity = Vector3.zero;
-            Invoke("RestartEnemy", stopTime);
+            Attacking = false;
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.gameObject.tag == "EnemyStopField" && agent.destination == playerPosition.position)
-        if (other.gameObject.tag == "EnemyStopField")
+        if (other.gameObject.tag == "EnemyStopField" && Attacking)
         {
             agent.isStopped = true;
             agent.velocity = Vector3.zero;
