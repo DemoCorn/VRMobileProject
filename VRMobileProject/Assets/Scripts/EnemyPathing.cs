@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class EnemyPathing : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent = null;
+    [SerializeField] private Rigidbody rigidBody = null;
     private Transform playerPosition;
     private Vector3 startingPosition;
 
@@ -52,9 +53,25 @@ public class EnemyPathing : MonoBehaviour
             Debug.Log("Encountered Stop Field");
             agent.isStopped = true;
             agent.velocity = Vector3.zero;
+            rigidBody.velocity = Vector3.zero;
+            rigidBody.angularVelocity = Vector3.zero;
             Invoke("RestartEnemy", stopTime);
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //if (other.gameObject.tag == "EnemyStopField" && agent.destination == playerPosition.position)
+        if (other.gameObject.tag == "EnemyStopField")
+        {
+            agent.isStopped = true;
+            agent.velocity = Vector3.zero;
+            rigidBody.velocity = Vector3.zero;
+            rigidBody.angularVelocity = Vector3.zero;
+            Invoke("RestartEnemy", stopTime);
+        }
+    }
+
     private void RestartEnemy()
     {
         agent.isStopped = false;
