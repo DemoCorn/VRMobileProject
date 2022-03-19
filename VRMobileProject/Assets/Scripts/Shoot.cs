@@ -14,7 +14,7 @@ public class Shoot : MonoBehaviour
     {
         IVRInputDevice VRInput = VRDevice.Device.PrimaryInputDevice;
 
-        if (Input.GetKeyDown(KeyCode.F) || VRInput.GetButtonDown(VRButton.One) || VRInput.GetButtonDown(VRButton.Two))
+        if (Input.GetKeyDown(KeyCode.F) || VRInput.GetButtonDown(VRButton.One))
         {
             FireBullet();
         }

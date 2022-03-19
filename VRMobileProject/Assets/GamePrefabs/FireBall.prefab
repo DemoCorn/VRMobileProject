@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2065333007925673884}
   - component: {fileID: 7332485488970870391}
   - component: {fileID: 3090228702406613246}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: "\u0421\u0444\u0435\u0440\u0430.001 (1)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 722713460287368297}
   - component: {fileID: 5817551933114898667}
   - component: {fileID: 2720884000230081632}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: "\u0421\u0444\u0435\u0440\u0430 (1)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 7940781045689787328}
   - component: {fileID: 3360545113122104525}
   - component: {fileID: -2739871174539328005}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FireBall
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 6795020595791863936}
   - component: {fileID: 3911781500003110406}
   - component: {fileID: 3978411977918061856}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: "\u0421\u0444\u0435\u0440\u0430"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -341,7 +341,7 @@ GameObject:
   - component: {fileID: 5309882240405512023}
   - component: {fileID: 9156175227378606925}
   - component: {fileID: 2824388104220163360}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: "\u0421\u0444\u0435\u0440\u0430.001"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
