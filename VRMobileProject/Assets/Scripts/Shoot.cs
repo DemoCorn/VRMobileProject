@@ -26,13 +26,13 @@ public class Shoot : MonoBehaviour
 
         if(shootOn == false && handSpeed >= handSpeedStart ||
             Input.GetButtonUp("Oculus_GearVR_LIndexTrigger") || Input.GetButtonUp("Oculus_GearVR_RIndexTrigger") ||
-            Input.GetButtonUp("Oculus_CrossPlatform_PrimaryHandTrigger") || Input.GetButtonUp("Oculus_CrossPlatform_SecondaryHandTrigger"))
+            Input.GetButtonUp("Oculus_CrossPlatform_Button4") || Input.GetButtonUp("Oculus_CrossPlatform_Button2"))
         {
             shootOn = true;
         }
         if (Input.GetKeyDown(KeyCode.F) || shootOn == true && handSpeed <= handSpeedEnd ||
             Input.GetButtonDown("Oculus_GearVR_LIndexTrigger") || Input.GetButtonDown("Oculus_GearVR_RIndexTrigger") ||
-            Input.GetButtonDown("Oculus_CrossPlatform_PrimaryHandTrigger") || Input.GetButtonDown("Oculus_CrossPlatform_SecondaryHandTrigger"))
+            Input.GetButtonDown("Oculus_CrossPlatform_Button4") || Input.GetButtonDown("Oculus_CrossPlatform_Button2"))
         {
             FireBullet();
             shootOn = false;
