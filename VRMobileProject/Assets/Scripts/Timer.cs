@@ -36,8 +36,10 @@ public class Timer : MonoBehaviour
             {
                 Destroy(item);
             }
-            StopCoroutine(Time());
         }
-        StartCoroutine(Time());
+        else
+        {
+            StartCoroutine(Time());
+        }
     }
 }
