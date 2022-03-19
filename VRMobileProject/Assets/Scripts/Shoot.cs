@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using Liminal.SDK.VR;
+using Liminal.SDK.VR.Input;
 
 public class Shoot : MonoBehaviour
 {
@@ -20,19 +23,18 @@ public class Shoot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        IVRInputDevice VRInput = VRDevice.Device.PrimaryInputDevice;
         handVelocity = handRb.velocity;
         handSpeed = handVelocity.magnitude;
         print(handSpeed);
 
-        if(shootOn == false && handSpeed >= handSpeedStart ||
-            Input.GetButtonUp("Oculus_GearVR_LIndexTrigger") || Input.GetButtonUp("Oculus_GearVR_RIndexTrigger") ||
-            Input.GetButtonUp("Oculus_CrossPlatform_PrimaryHandTrigger") || Input.GetButtonUp("Oculus_CrossPlatform_SecondaryHandTrigger"))
+        if (shootOn == false && handSpeed >= handSpeedStart || VRInput.GetButtonUp(VRButton.One)
+            || VRInput.GetButtonUp(VRButton.Two))
         {
             shootOn = true;
         }
-        if (Input.GetKeyDown(KeyCode.F) || shootOn == true && handSpeed <= handSpeedEnd ||
-            Input.GetButtonDown("Oculus_GearVR_LIndexTrigger") || Input.GetButtonDown("Oculus_GearVR_RIndexTrigger") ||
-            Input.GetButtonDown("Oculus_CrossPlatform_PrimaryHandTrigger") || Input.GetButtonDown("Oculus_CrossPlatform_SecondaryHandTrigger"))
+        if (Input.GetKeyDown(KeyCode.F) || shootOn == true && handSpeed <= handSpeedEnd || VRInput.GetButtonDown(VRButton.One)
+            || VRInput.GetButtonDown(VRButton.Two))
         {
             FireBullet();
             shootOn = false;
